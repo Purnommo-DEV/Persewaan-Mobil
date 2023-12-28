@@ -1,0 +1,20 @@
+- PHP Versi 8.1
+- Laravel Framework 10.39.0
+- Database MySQL
+
+Instalasi :
+Pada terminal:
+- git clone https://github.com/Purnommo-DEV/Persewaan-Mobil.git
+- Masuk folder project, kemudian arahkan terminal ke folder project kemudian ketikkan composer install.
+- Masuk terminal kemudian ketikkan php artisan key:generate.
+- Masuk terminal kemudian ketikkan php artisan serve.
+	Default : http://127.0.0.1:8000/register
+- Nama Database : db_penyewaan_mobil.sql (Tinggal di import ke phpMyAdmin)
+
+Akun Pemilik : 
+email : pemilik@gmail.com
+pass : 22222222
+
+Akun Peminjam : 
+email : peminjam@gmail.com
+pass : 22222222
