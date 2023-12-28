@@ -5,16 +5,17 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('pemilik.TambahDataMobil') }}" id="formTambahDataMobil" method="POST"
+                        <form action="{{ route('pemilik.ProsesEditDataMobil') }}" id="formEditDataMobil" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
 
-
+                                <input type="hidden" value="{{ $data_mobil->id }}" name="mobil_id" hidden>
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <label class="col col-form-label" for="kategori">merek</label>
-                                        <input name="merek" class="form-control" placeholder="Name merek">
+                                        <label class="col col-form-label" for="kategori">Merek</label>
+                                        <input name="merek" value="{{ $data_mobil->merek }}" class="form-control"
+                                            placeholder="Merek">
                                     </div>
                                     <div class="input-group has-validation">
                                         <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -25,7 +26,8 @@
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                         <label class="col col-form-label" for="kategori">Model</label>
-                                        <input name="model" class="form-control" placeholder="Name model">
+                                        <input name="model" value="{{ $data_mobil->model }}" class="form-control"
+                                            placeholder="Model">
                                     </div>
                                     <div class="input-group has-validation">
                                         <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -37,8 +39,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <label class="col col-form-label" for="kategori">nomor_plat</label>
-                                        <input name="nomor_plat" class="form-control" placeholder="Name nomor_plat">
+                                        <label class="col col-form-label" for="kategori">Nomor Plat</label>
+                                        <input name="nomor_plat" value="{{ $data_mobil->nomor_plat }}" class="form-control"
+                                            placeholder="Nomor Plat">
                                     </div>
                                     <div class="input-group has-validation">
                                         <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -48,8 +51,9 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-12">
-                                        <label class="col col-form-label" for="kategori">tarif_harian</label>
-                                        <input name="tarif_harian" class="form-control" placeholder="Name tarif_harian">
+                                        <label class="col col-form-label" for="kategori">Tarif Harian</label>
+                                        <input name="tarif_harian" value="{{ $data_mobil->tarif_harian }}"
+                                            class="form-control" placeholder="Tarif Harian">
                                     </div>
                                     <div class="input-group has-validation">
                                         <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -77,55 +81,4 @@
             </div>
         </div>
     </section>
-@endsection
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $('#table-data-mobil').DataTable();
-        });
-
-
-        $('#formTambahDataMobil').on('submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action'),
-                method: $(this).attr('method'),
-                data: new FormData(this),
-                processData: false,
-                dataType: 'json',
-                contentType: false,
-                cache: false,
-                beforeSend: function() {
-                    $(document).find('label.error-text').text('');
-                },
-                success: function(data) {
-                    if (data.status == 0) {
-                        $.each(data.error, function(prefix, val) {
-                            $('label.' + prefix + '_error').text(val[0]);
-                            // $('span.'+prefix+'_error').text(val[0]);
-                        });
-                    } else if (data.status == 1) {
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal
-                                    .stopTimer)
-                                toast.addEventListener('mouseleave', Swal
-                                    .resumeTimer)
-                            }
-                        })
-
-                        Toast.fire({
-                            icon: 'success',
-                            title: data.msg
-                        })
-                    }
-                },
-            });
-        });
-    </script>
 @endsection

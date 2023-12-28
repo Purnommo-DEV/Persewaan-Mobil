@@ -57,42 +57,37 @@ class PemilikMobil_Controller extends Controller
         return view('Back.Mobil.edit_mobil', compact('data_mobil'));
     }
 
-    // public function proses_edit_data_mobil(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'merek' => 'required',
-    //         'model' => 'required',
-    //         'nomor_plat' => 'required',
-    //         'tarif_harian' => 'required'
-    //     ], [
-    //         'merek.required' => 'Nama Wajib diisi',
-    //         'model.required' => 'Nama Wajib diisi',
-    //         'nomor_plat.required' => 'Nama Wajib diisi',
-    //         'tarif_harian.required' => 'Nama Wajib diisi',
-    //     ]);
+    public function proses_edit_data_mobil(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'merek' => 'required',
+            'model' => 'required',
+            'nomor_plat' => 'required',
+            'tarif_harian' => 'required'
+        ], [
+            'merek.required' => 'Nama Wajib diisi',
+            'model.required' => 'Nama Wajib diisi',
+            'nomor_plat.required' => 'Nama Wajib diisi',
+            'tarif_harian.required' => 'Nama Wajib diisi',
+        ]);
 
-    //     if (!$validator->passes()) {
-    //         return response()->json([
-    //             'status_form_kosong' => 1,
-    //             'error' => $validator->errors()->toArray()
-    //         ]);
-    //     } else {
-    //         // $data_mobil = Mobil
-    //         Mobil::create([
-    //             'merek' => $request->merek,
-    //             'model' => $request->model,
-    //             'nomor_plat' => $request->nomor_plat,
-    //             'tarif_harian' => $request->tarif_harian,
-    //             'status' => 0
-    //         ]);
+        if (!$validator->passes()) {
+            return response()->json([
+                'status_form_kosong' => 1,
+                'error' => $validator->errors()->toArray()
+            ]);
+        } else {
+            $data_mobil = Mobil::where('id', $request->mobil_id)->first();
+            $data_mobil->update([
+                'merek' => $request->merek,
+                'model' => $request->model,
+                'nomor_plat' => $request->nomor_plat,
+                'tarif_harian' => $request->tarif_harian,
+            ]);
 
-    //         return response()->json([
-    //             'status_berhasil_daftar' => 1,
-    //             'msg' => 'Berhasil Melakukan Registrasi',
-    //             'route' => route('Login')
-    //         ]);
-    //     }
-    // }
+            return redirect()->route('pemilik.HalamanDataMobil');
+        }
+    }
 
     public function data_peminjaman()
     {

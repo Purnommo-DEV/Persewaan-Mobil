@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(PemilikMobil_Controller::class)->group(function () {
             Route::get('/data-mobil', 'data_mobil')->name('HalamanDataMobil');
             Route::post('/tambah-data-mobil', 'tambah_data_mobil')->name('TambahDataMobil');
-            Route::get('/edit-data-mobil/{kode_mobil}', 'edit_data_mobil')->name('HalamanEditDataMobil');
+            Route::get('/edit-data-mobil/{kode_mobil}', 'edit_data_mobil')->name('HalamanDataMobil.HalamanEditDataMobil');
             Route::post('/proses-edit-data-mobil', 'proses_edit_data_mobil')->name('ProsesEditDataMobil');
             Route::get('/hapus-data-mobil/{pengguna_id}', 'hapus_data_mobil');
             Route::get('/data-peminjaman', 'data_peminjaman')->name('HalamanDaftarDataPeminjaman');

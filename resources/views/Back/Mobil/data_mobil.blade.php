@@ -117,10 +117,8 @@
                                                 Tidak Tersedia
                                             @endif
                                         </td>
-                                        <td><a href="{{ route('pemilik.HalamanEditDataMobil', $mobil->nomor_plat) }}"
+                                        <td><a href="{{ route('pemilik.HalamanDataMobil.HalamanEditDataMobil', $mobil->nomor_plat) }}"
                                                 class="btn btn-warning btn-sm">Edit</a>
-                                            <button type="button" class="btn btn-danger btn-sm hapus_mobil"
-                                                id-mobil = "{{ $mobil->id }}}" href="#!">Hapus</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -181,95 +179,6 @@
                         location.reload();
                     }
                 },
-            });
-        });
-
-        // $('#formEditDataKategori').on('submit', function(e) {
-        //     e.preventDefault();
-        //     $.ajax({
-        //         url: $(this).attr('action'),
-        //         method: $(this).attr('method'),
-        //         data: new FormData(this),
-        //         processData: false,
-        //         dataType: 'json',
-        //         contentType: false,
-        //         beforeSend: function() {
-        //             $(document).find('label.error-text').text('');
-        //         },
-        //         success: function(data) {
-        //             if (data.status == 0) {
-        //                 $.each(data.error, function(prefix, val) {
-        //                     $('label.' + prefix + '_error').text(val[0]);
-        //                     // $('span.'+prefix+'_error').text(val[0]);
-        //                 });
-        //             } else if (data.status == 1) {
-        //                 $("#modalEditDataKategori").modal('hide');
-        //                 const Toast = Swal.mixin({
-        //                     toast: true,
-        //                     position: 'top-end',
-        //                     showConfirmButton: false,
-        //                     timer: 3000,
-        //                     timerProgressBar: true,
-        //                     didOpen: (toast) => {
-        //                         toast.addEventListener('mouseenter', Swal
-        //                             .stopTimer)
-        //                         toast.addEventListener('mouseleave', Swal
-        //                             .resumeTimer)
-        //                     }
-        //                 })
-
-        //                 Toast.fire({
-        //                     icon: 'success',
-        //                     title: data.msg
-        //                 })
-        //                 table_data_kategori.ajax.reload(null, false);
-        //             }
-        //         }
-        //     });
-        // });
-
-        $(document).on('click', '.hapus_kategori', function(event) {
-            const id = $(event.currentTarget).attr('id-kategori');
-
-            Swal.fire({
-                title: 'Yakin ingin mengahpus data ini?',
-                icon: 'warning',
-                showDenyButton: true,
-            }).then(function(result) {
-                if (result.value) {
-                    $.ajax({
-                        url: "/admin/hapus-data-kategori/" + id,
-                        dataType: 'json',
-                        success: function(data) {
-                            if (data.status == 0) {
-                                alert("Gagal Hapus")
-                            } else if (data.status == 1) {
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal
-                                            .stopTimer)
-                                        toast.addEventListener('mouseleave', Swal
-                                            .resumeTimer)
-                                    }
-                                })
-
-                                Toast.fire({
-                                        icon: 'success',
-                                        title: data.msg
-                                    }),
-                                    table_data_kategori.ajax.reload()
-                            }
-                        }
-                    });
-                } else {
-                    //alert ('no');
-                    return false;
-                }
             });
         });
     </script>
