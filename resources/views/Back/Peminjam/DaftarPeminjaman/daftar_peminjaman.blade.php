@@ -84,7 +84,8 @@
                                                                 <label class="col col-form-label" for="kategori">Total
                                                                     Biaya Sewa</label>
                                                                 <input class="form-control"
-                                                                    value="{{ $peminjaman->total_biaya_sewa }}" readonly>
+                                                                    value="{{ help_format_rupiah($peminjaman->total_biaya_sewa) }}"
+                                                                    readonly>
                                                             </div>
                                                         </div>
                                                     </div>

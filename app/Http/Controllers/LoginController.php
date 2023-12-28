@@ -41,7 +41,7 @@ class LoginController extends Controller
                     return response()->json([
                         'status_berhasil_login' => 1,
                         'msg' => 'Berhasil login!',
-                        'route' => route('peminjam.HalamanDaftarmobil')
+                        'route' => route('peminjam.HalamanDaftarMobil')
                     ]);
                 }
             } else {

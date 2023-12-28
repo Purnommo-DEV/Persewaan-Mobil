@@ -1,7 +1,9 @@
 @extends('layout.master_login_register_forgot', ['title' => 'Login'])
 @section('konten')
     <div class="wrapper">
-
+        <div class="logo">
+            <img src="{{ asset('All/img/rent.png') }}" alt="">
+        </div>
         <div class="text-center mt-4">
             <p>Silahkan masuk dengan akun anda</p>
         </div>

@@ -1,6 +1,12 @@
 @extends('layout.master_login_register_forgot', ['title' => 'Daftar Akun'])
 @section('konten')
     <div class="wrapper">
+        <div class="logo">
+            <img src="{{ asset('All/img/rent.png') }}" alt="">
+        </div>
+        <div class="text-center mt-4">
+            <p>Silahkan isi form berikut untuk registrasi</p>
+        </div>
         <form class="p-3 mt-3" id="form-daftar-pengguna">
             <div class="form-group">
                 <div class="form-field d-flex align-items-center" style="margin-bottom: 0%;">
@@ -15,8 +21,8 @@
 
             <div class="form-group">
                 <div class="form-field d-flex align-items-center" style="margin-bottom: 0%;">
-                    <span class="far fa-user"></span>
-                    <input type="text" name="alamat" id="alamat" placeholder="alamat">
+                    <span class="far fa-map"></span>
+                    <input type="text" name="alamat" id="alamat" placeholder="Alamat">
                 </div>
                 <div class="input-group has-validation" style="margin-bottom: 20px; margin-top: 5px;">
                     <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -38,8 +44,8 @@
 
             <div class="form-group">
                 <div class="form-field d-flex align-items-center" style="margin-bottom: 0%;">
-                    <span class="fas fa-key"></span>
-                    <input type="text" name="nomor_telpon" id="nomor_telpon" placeholder="nomor_telpon">
+                    <span class="fas fa-phone"></span>
+                    <input type="text" name="nomor_telpon" id="nomor_telpon" placeholder="Nomor Telepon">
                 </div>
                 <div class="input-group has-validation" style="margin-bottom: 20px; margin-top: 5px;">
                     <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
@@ -50,8 +56,8 @@
 
             <div class="form-group">
                 <div class="form-field d-flex align-items-center" style="margin-bottom: 0%;">
-                    <span class="fas fa-key"></span>
-                    <input type="nomor_sim" name="nomor_sim" id="nomor_sim" placeholder="nomor_sim">
+                    <span class="fas fa-address-card"></span>
+                    <input type="nomor_sim" name="nomor_sim" id="nomor_sim" placeholder="Nomor SIM">
                 </div>
                 <div class="input-group has-validation" style="margin-bottom: 20px; margin-top: 5px;">
                     <label style="margin-top: 0.2rem; font-size: 0.8rem; font-weight: 600;"
